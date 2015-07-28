@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bouchon.API", "Bouchon.API\Bouchon.API.csproj", "{CD995817-6F55-44FE-8539-C447B91B6879}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bouchon.API.Tests", "Bouchon.API.Tests\Bouchon.API.Tests.csproj", "{98CAFEDE-1690-4027-8532-F3AF7D7EACE9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CD995817-6F55-44FE-8539-C447B91B6879}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD995817-6F55-44FE-8539-C447B91B6879}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD995817-6F55-44FE-8539-C447B91B6879}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD995817-6F55-44FE-8539-C447B91B6879}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98CAFEDE-1690-4027-8532-F3AF7D7EACE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98CAFEDE-1690-4027-8532-F3AF7D7EACE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98CAFEDE-1690-4027-8532-F3AF7D7EACE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98CAFEDE-1690-4027-8532-F3AF7D7EACE9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
