@@ -146,6 +146,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Services" />
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=4.0.20622.1351, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.4.0.2.206221351\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
       <Private>True</Private>
@@ -259,6 +260,8 @@
     <Compile Include="Authentication\ApplicationUserManager.cs" />
     <Compile Include="Authentication\AuthMailService.cs" />
     <Compile Include="Authentication\Clients.cs" />
+    <Compile Include="Authentication\CustomJwtFormat.cs" />
+    <Compile Include="Authentication\CustomOAuthProvider.cs" />
     <Compile Include="Authentication\Scopes.cs" />
     <Compile Include="Authentication\Users.cs" />
     <Compile Include="BindingModels\ChangePasswordBindingModel.cs" />
