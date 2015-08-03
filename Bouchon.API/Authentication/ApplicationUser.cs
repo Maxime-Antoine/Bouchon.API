@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Bouchon.API.Authentication
 {
@@ -21,5 +24,11 @@ namespace Bouchon.API.Authentication
         public DateTime JoinDate { get; set; }
 
         public DateTime LastLoginDate { get; set; }
+
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
+        {
+            var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
+            return userIdentity;
+        }
     }
 }
