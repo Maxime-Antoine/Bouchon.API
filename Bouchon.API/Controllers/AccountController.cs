@@ -9,7 +9,7 @@ using System.Web.Http;
 
 namespace Bouchon.API.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [RoutePrefix("api")]
     public class AccountController : ApiController
     {
@@ -67,6 +67,7 @@ namespace Bouchon.API.Controllers
                 return NotFound();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("user")]
         public async Task<IHttpActionResult> CreateUser(CreateUserBindingModel createUserModel)
@@ -99,6 +100,7 @@ namespace Bouchon.API.Controllers
             return Created(location, user);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("ConfirmEmail", Name = "ConfirmEmailRoute")]
         public async Task<IHttpActionResult> ConfirmEmail(string userId = "", string code = "")
