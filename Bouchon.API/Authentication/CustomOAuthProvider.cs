@@ -16,9 +16,7 @@ namespace Bouchon.API.Authentication
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            var allowedOrigin = "*";
-
-            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });
+            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
 
             var scope = context.OwinContext.Get<Autofac.Core.Lifetime.LifetimeScope>("autofac:OwinLifetimeScope");
             var usrMgr = scope.GetService(typeof(ApplicationUserManager)) as ApplicationUserManager;

@@ -14,12 +14,12 @@ namespace Bouchon.API
             HttpConfiguration config = new HttpConfiguration();
 
             WebApiConfig.Register(config);
-            app.UseCors(CorsOptions.AllowAll); //Allow CORS for API
 
             IocConfig.Config(app, config);
 
             AuthConfig.Config(app);
 
+            app.UseCors(CorsOptions.AllowAll); //Allow CORS for API
             app.UseWebApi(config);
         }
     }
