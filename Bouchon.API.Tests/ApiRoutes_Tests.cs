@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Bouchon.API.Controllers;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,12 +32,28 @@ namespace Bouchon.API.Tests
         {
             var routesToTest = new List<RouteToTest>
             {
-                // Shares
-                //new RouteToTest(HttpMethod.Get, "api/share", "GET: api/share", typeof(ShareApiController), "Get"),
-                //new RouteToTest(HttpMethod.Get, "api/share/5", "GET: api/share/{id:int}", typeof(ShareApiController), "Get"),
-                //new RouteToTest(HttpMethod.Post, "api/share", "POST: api/share", typeof(ShareApiController), "Post"),
-                //new RouteToTest(HttpMethod.Put, "api/share", "PUT: api/share", typeof(ShareApiController), "Put"),
-                //new RouteToTest(HttpMethod.Delete, "api/share/5", "DELETE: api/share/{id:int}", typeof(ShareApiController), "Delete"),
+                // Account ctrl
+                new RouteToTest(HttpMethod.Get, "api/user", "GET: api/user", typeof(AccountController), "GetUsers"),
+                new RouteToTest(HttpMethod.Get, "api/user/e2ced16a-5cfd-4482-9775-3cf26c1b084c", "GET: api/user/{id:guid}", typeof(AccountController), "GetUserById"),
+                new RouteToTest(HttpMethod.Get, "api/user/root", "GET: api/user/{username}", typeof(AccountController), "GetUserByName"),
+                new RouteToTest(HttpMethod.Get, "api/user/email@email.test", "GET: api/user/{email:regex(^\\S+@\\S+\\.\\S+$)}", typeof(AccountController), "GetUserByEmail"),
+                new RouteToTest(HttpMethod.Post, "api/user", "POST: api/user", typeof(AccountController), "CreateUser"),
+                new RouteToTest(HttpMethod.Get, "api/user/ConfirmEmail", "GET: api/ConfirmEmail", typeof(AccountController), "ConfirmEmail"),
+                new RouteToTest(HttpMethod.Post, "api/user/ChangePassword", "POST: api/ChangePassword", typeof(AccountController), "ChangePassword"),
+                new RouteToTest(HttpMethod.Delete, "api/user/e2ced16a-5cfd-4482-9775-3cf26c1b084c", "DELETE: api/user/{id:guid}", typeof(AccountController), "DeleteUser"),
+                new RouteToTest(HttpMethod.Put, "api/user/AssignRoles/e2ced16a-5cfd-4482-9775-3cf26c1b084c", "PUT: api/user/AssignRoles/{id:guid}", typeof(AccountController), "AssignRolesToUser"),
+            
+                // Role ctrl
+                new RouteToTest(HttpMethod.Get, "api/role", "GET: api/role", typeof(RoleController), "Get"),
+                new RouteToTest(HttpMethod.Get, "api/role/e2ced16a-5cfd-4482-9775-3cf26c1b084c", "GET: api/role/{id:guid}", typeof(RoleController), "GetRoleById"),
+                new RouteToTest(HttpMethod.Post, "api/role", "POST: api/role", typeof(RoleController), "Create"),
+                new RouteToTest(HttpMethod.Delete, "api/role/e2ced16a-5cfd-4482-9775-3cf26c1b084c", "DELETE: api/role/{id:guid}", typeof(RoleController), "Delete"),
+                new RouteToTest(HttpMethod.Post, "api/ManageUsersInRole", "POST: api/ManageUsersInRole", typeof(RoleController), "ManageUsersInRole"),
+            
+                // Request ctrl
+                new RouteToTest(HttpMethod.Get, "api/request", "GET: api/request", typeof(RequestController), "Get"),
+                new RouteToTest(HttpMethod.Get, "api/request/5", "GET: api/request/{id:int}", typeof(RequestController), "GetById"),
+                new RouteToTest(HttpMethod.Put, "api/request", "POST: api/request", typeof(RequestController), "Post")
             };
 
             foreach (var route in routesToTest)
