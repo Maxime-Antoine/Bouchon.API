@@ -24,6 +24,7 @@ namespace Bouchon.API.BindingModels
         public byte[] Picture { get; set; }
 
         [DataType(DataType.Url)]
+        [MaxLength(250)]
         public string Url { get; set; }
 
         [Required]

@@ -9,8 +9,8 @@ using System.Web.Http;
 
 namespace Bouchon.API.Controllers
 {
-    //[Authorize]
-    [RoutePrefix("api")]
+    [Authorize]
+    [RoutePrefix("api/user")]
     public class AccountController : ApiController
     {
         private ApplicationUserManager _userMgr;
@@ -23,7 +23,7 @@ namespace Bouchon.API.Controllers
         }
 
         [HttpGet]
-        [Route("user")]
+        [Route("")]
         public async Task<IHttpActionResult> GetUsers()
         {
             var users = await _userMgr.Users.ToListAsync();
@@ -32,7 +32,7 @@ namespace Bouchon.API.Controllers
         }
 
         [HttpGet]
-        [Route("user/{id:guid}")]
+        [Route("{id:guid}")]
         public async Task<IHttpActionResult> GetUserById(string id)
         {
             var user = await _userMgr.FindByIdAsync(id);
@@ -44,7 +44,7 @@ namespace Bouchon.API.Controllers
         }
 
         [HttpGet]
-        [Route("user/{username}")]
+        [Route("{username}")]
         public async Task<IHttpActionResult> GetUserByName(string username)
         {
             var user = await _userMgr.FindByNameAsync(username);
@@ -56,7 +56,7 @@ namespace Bouchon.API.Controllers
         }
 
         [HttpGet]
-        [Route("user/{email:regex(^\\S+@\\S+\\.\\S+$)}")]
+        [Route("{email:regex(^\\S+@\\S+\\.\\S+$)}")]
         public async Task<IHttpActionResult> GetUserByEmail(string email)
         {
             var user = await _userMgr.FindByEmailAsync(email);
@@ -67,8 +67,9 @@ namespace Bouchon.API.Controllers
                 return NotFound();
         }
 
+        [AllowAnonymous]
         [HttpPost]
-        [Route("user")]
+        [Route("")]
         public async Task<IHttpActionResult> CreateUser(CreateUserBindingModel createUserModel)
         {
             if (!ModelState.IsValid)
@@ -99,6 +100,7 @@ namespace Bouchon.API.Controllers
             return Created(location, user);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("ConfirmEmail", Name = "ConfirmEmailRoute")]
         public async Task<IHttpActionResult> ConfirmEmail(string userId = "", string code = "")
@@ -133,7 +135,7 @@ namespace Bouchon.API.Controllers
         }
 
         [HttpDelete]
-        [Route("user/{id:guid}")]
+        [Route("{id:guid}")]
         public async Task<IHttpActionResult> DeleteUser(string id)
         {
             var appUser = await _userMgr.FindByIdAsync(id);
@@ -151,6 +153,7 @@ namespace Bouchon.API.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPut]
+        [Route("AssignRoles/{id:guid}")]
         public async Task<IHttpActionResult> AssignRolesToUser([FromUri] string id, [FromBody] string[] rolesToAssign)
         {
             var appUser = await _userMgr.FindByIdAsync(id);

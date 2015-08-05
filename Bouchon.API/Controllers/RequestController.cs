@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace Bouchon.API.Controllers
 {
-    [RoutePrefix("api")]
+    [RoutePrefix("api/request")]
     public class RequestController : ApiController
     {
         private IRepository<Request> _requestRepo;

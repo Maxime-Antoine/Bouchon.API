@@ -62,7 +62,7 @@ namespace Bouchon.API.Controllers
         }
 
         [HttpDelete]
-        [Route("")]
+        [Route("{id:guid}")]
         public async Task<IHttpActionResult> Delete(string id)
         {
             var role = await _roleMgr.FindByIdAsync(id);
