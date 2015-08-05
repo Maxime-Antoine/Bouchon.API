@@ -10,7 +10,7 @@ using System.Web.Http;
 namespace Bouchon.API.Controllers
 {
     [Authorize]
-    [RoutePrefix("api/user")]
+    [RoutePrefix("api/account")]
     public class AccountController : ApiController
     {
         private ApplicationUserManager _userMgr;
