@@ -3,6 +3,8 @@ using Bouchon.API.Db;
 using Bouchon.API.Models;
 using Microsoft.AspNet.Identity;
 using System;
+using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -28,7 +30,7 @@ namespace Bouchon.API.Controllers
         }
 
         [HttpGet]
-        [Route("", Name = "GetRequestById")]
+        [Route("{id:int}", Name = "GetRequestById")]
         public async Task<IHttpActionResult> GetById(int id)
         {
             var req = await _requestRepo.GetById(id);
@@ -39,9 +41,19 @@ namespace Bouchon.API.Controllers
             return Ok(req);
         }
 
+        [HttpGet]
+        [Route("{id:guid}")]
+        public async Task<IHttpActionResult> GetForUser(string id)
+        {
+            var req = await _requestRepo.Query()
+                                        .Where(r => r.UserId == id)
+                                        .ToListAsync();
+            return Ok(req);
+        }
+
         [HttpPost]
         [Route("")]
-        public async Task<IHttpActionResult> Create(RequestBindingModel model)
+        public async Task<IHttpActionResult> Create(CreateRequestBindingModel model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -64,9 +76,9 @@ namespace Bouchon.API.Controllers
 
             var createdReq = await _requestRepo.Add(request);
 
-            Uri location  = new Uri(Url.Link("GetRequestById", new { id = createdReq.UserId }));
+            Uri location = new Uri(Url.Link("GetRequestById", new { id = createdReq.UserId }));
 
-            return Created(location, request);
+            return Created(location, createdReq);
         }
     }
 }

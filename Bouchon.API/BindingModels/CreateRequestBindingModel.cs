@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Bouchon.API.BindingModels
 {
-    public class RequestBindingModel
+    public class CreateRequestBindingModel
     {
         [Required]
-        [StringLength(75, MinimumLength=2, ErrorMessage="Item name must be between 2 and 75 characters long")]
+        [StringLength(75, MinimumLength = 2, ErrorMessage = "Item name must be between 2 and 75 characters long")]
         public string ItemName { get; set; }
 
         [Required]
-        [StringLength(350, MinimumLength=2, ErrorMessage="Item description must be between 2 and 350 characters long")]
+        [StringLength(350, MinimumLength = 2, ErrorMessage = "Item description must be between 2 and 350 characters long")]
         public string ItemDescription { get; set; }
 
         [Required]
@@ -32,7 +28,7 @@ namespace Bouchon.API.BindingModels
         public string CityToBuy { get; set; }
 
         [Required]
-        [StringLength(350, MinimumLength=5, ErrorMessage = "Prefered dealing location must be between 5 and 350 characters long")]
+        [StringLength(350, MinimumLength = 5, ErrorMessage = "Prefered dealing location must be between 5 and 350 characters long")]
         public string PreferedDealingLocation { get; set; }
 
         [Required]

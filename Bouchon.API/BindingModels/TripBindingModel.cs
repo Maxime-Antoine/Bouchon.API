@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Bouchon.API.BindingModels
 {
-    public class TripBindingModel
+    public class CreateTripBindingModel
     {
         [Required]
         [StringLength(50, MinimumLength = 2, ErrorMessage="City must be between 2 and 50 characters long")]
