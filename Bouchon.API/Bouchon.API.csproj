@@ -267,14 +267,14 @@
     <Compile Include="BindingModels\ChangePasswordBindingModel.cs" />
     <Compile Include="BindingModels\CreateRoleBindingModel.cs" />
     <Compile Include="BindingModels\CreateUserBindingModel.cs" />
-    <Compile Include="BindingModels\RequestBindingModel.cs" />
+    <Compile Include="BindingModels\CreateRequestBindingModel.cs" />
     <Compile Include="BindingModels\TripBindingModel.cs" />
     <Compile Include="BindingModels\UsersInRoleModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CrudApiController.cs" />
     <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\TripController.cs" />
     <Compile Include="Db\AppDbContext.cs" />
     <Compile Include="Db\IRepository.cs" />
     <Compile Include="Db\Repository.cs" />
