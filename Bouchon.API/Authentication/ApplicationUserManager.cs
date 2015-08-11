@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security.DataProtection;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -27,6 +29,9 @@ namespace Bouchon.API.Authentication
                 RequiredLength = 6,
                 RequireNonLetterOrDigit = true
             };
+
+            var provider = new DpapiDataProtectionProvider(ConfigurationManager.AppSettings["appName"]);
+            UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser>(provider.Create("User token"));
         }
     }
 }

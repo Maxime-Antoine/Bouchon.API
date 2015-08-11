@@ -88,7 +88,7 @@ namespace Bouchon.API.Controllers
             IdentityResult addUserResult = await _userMgr.CreateAsync(user, createUserModel.Password);
 
             if (!addUserResult.Succeeded)
-                return BadRequest("Error during user creation" + addUserResult.Errors.First());
+                return BadRequest(addUserResult.Errors.First());
 
             //send confirmation email
             var code = await _userMgr.GenerateEmailConfirmationTokenAsync(user.Id);
