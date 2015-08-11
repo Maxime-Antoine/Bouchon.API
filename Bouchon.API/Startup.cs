@@ -15,6 +15,8 @@ namespace Bouchon.API
     {
         public void Configuration(IAppBuilder app)
         {
+            app.UseCors(CorsOptions.AllowAll); //Allow CORS for API
+
             HttpConfiguration config = new HttpConfiguration();
 
             WebApiConfig.Register(config);
@@ -23,7 +25,6 @@ namespace Bouchon.API
 
             AuthConfig.Config(app);
 
-            app.UseCors(CorsOptions.AllowAll); //Allow CORS for API
             app.UseWebApi(config);
 
             //configure SMTP
