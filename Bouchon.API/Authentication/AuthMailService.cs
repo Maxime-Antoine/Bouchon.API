@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using Postal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,14 @@ namespace Bouchon.API.Authentication
     {
         public Task SendAsync(IdentityMessage message)
         {
-            throw new NotImplementedException();
+            dynamic email = new Email("AuthEmail");
+            email.To = message.Destination;
+            email.Body = message.Body;
+            email.Subject = message.Subject;
+
+            email.Send();
+
+            return Task.FromResult(0);
         }
     }
 }

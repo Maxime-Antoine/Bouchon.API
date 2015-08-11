@@ -32,7 +32,7 @@ namespace Bouchon.API.Controllers
         }
 
         [HttpGet]
-        [Route("{id:guid}")]
+        [Route("{id:guid}", Name = "GetUserById")]
         public async Task<IHttpActionResult> GetUserById(string id)
         {
             var user = await _userMgr.FindByIdAsync(id);
