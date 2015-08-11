@@ -28,13 +28,13 @@ namespace Bouchon.API
             app.UseWebApi(config);
 
             //configure SMTP
-            var webconfig = WebConfigurationManager.OpenWebConfiguration("~") as System.Configuration.Configuration;
-            var settings = webconfig.GetSectionGroup("system.net/mailSettings") as MailSettingsSectionGroup;
-            settings.Smtp.Network.Port = Int32.Parse(ConfigurationManager.AppSettings["sg:port"]);
-            settings.Smtp.Network.Host = ConfigurationManager.AppSettings["sg:server"];
-            settings.Smtp.Network.UserName = ConfigurationManager.AppSettings["sg:username"];
-            settings.Smtp.Network.Password = ConfigurationManager.AppSettings["sg:password"];
-            webconfig.Save();
+            //var webconfig = WebConfigurationManager.OpenWebConfiguration("~") as System.Configuration.Configuration;
+            //var settings = webconfig.GetSectionGroup("system.net/mailSettings") as MailSettingsSectionGroup;
+            //settings.Smtp.Network.Port = Int32.Parse(ConfigurationManager.AppSettings["sg:port"]);
+            //settings.Smtp.Network.Host = ConfigurationManager.AppSettings["sg:server"];
+            //settings.Smtp.Network.UserName = ConfigurationManager.AppSettings["sg:username"];
+            //settings.Smtp.Network.Password = ConfigurationManager.AppSettings["sg:password"];
+            //webconfig.Save();
         }
     }
 }
